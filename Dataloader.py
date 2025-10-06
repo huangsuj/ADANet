@@ -9,20 +9,12 @@ from sklearn.preprocessing import minmax_scale, maxabs_scale, normalize, robust_
 
 def load_data(args):
     data = sio.loadmat(args.path + args.dataset + '.mat')
-    if args.dataset == "Cora":
-        features = data['X1']
-        labels = data['Y'].flatten()
-    elif args.dataset in ["HW", "scene15", 'citeseer']:
+    if args.dataset in ["HW", "scene15"]:
         labels = data['truth'].flatten()
         features = data['X']
         if args.dataset == 'scene15':
             for i in range(features.shape[1]):
                 features[0][i] = features[0][i].T
-    elif args.dataset == "NoisyMNIST-15000":
-        features = np.empty((1, 2), dtype=object)
-        features[0][0] = data['X1']
-        features[0][1] = data['X2']
-        labels = data['Y'].flatten()
     else:
         features = data['X']
 
