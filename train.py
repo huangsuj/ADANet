@@ -20,7 +20,7 @@ if __name__ == '__main__':
     os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
     args = parameter_parser()
 
-    Graph_dataset = ['NGs']
+    Graph_dataset = ['BBCSports']
     for index, item in enumerate(Graph_dataset):
         args.dataset = item
         print('--------------Multi-view Datasets: {}--------------------'.format(args.dataset))
@@ -160,4 +160,5 @@ if __name__ == '__main__':
         print("-----------------------")
         print("ACC: {:.2f} ({:.2f})".format(np.mean(all_ACC) * 100, np.std(all_ACC) * 100))
         print("F1 : {:.2f} ({:.2f})".format(np.mean(all_F1) * 100, np.std(all_F1) * 100))
+
         print("-----------------------")
